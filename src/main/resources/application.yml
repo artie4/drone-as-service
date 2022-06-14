@@ -11,13 +11,27 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
+  sql:
+    init:
+      mode: always
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true
         use_sql_comments: true
         format_sql: true
+  application:
+    name: drone-as-service
+    version: 0.0.1
 logging:
   level:
     org.hibernate.type: trace
+
+drone:
+  battery:
+    min-for-loading: 25
